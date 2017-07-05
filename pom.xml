@@ -6,8 +6,10 @@
   <packaging>war</packaging>
   <name>vkfilebotwebsite</name>
   <description>website for VkFiles_Bot</description>
+  
   <build>
     <sourceDirectory>src</sourceDirectory>
+    
     <plugins>
       
       <plugin>
@@ -35,4 +37,12 @@
       
     </plugins>
   </build>
+  <dependencies>
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>3.0.1</version>
+  		<scope>provided</scope>
+  	</dependency>
+  </dependencies>
 </project>
