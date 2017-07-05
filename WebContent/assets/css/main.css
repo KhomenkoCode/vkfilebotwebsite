@@ -15,6 +15,7 @@
 		border: 0;
 		font-size: 100%;
 		font: inherit;
+		height:100%;
 		vertical-align: baseline;
 	}
 
@@ -2121,14 +2122,14 @@
 		#footer .copyright {
 			cursor: default;
 			margin: 0;
+			padding: 0;
 		}
 
 			#footer .copyright li {
 				display: inline-block;
 				line-height: 1em;
 				border-left: solid 1px rgba(128, 128, 128, 0.35);
-				padding: 0 0 0 0.5em;
-				margin: 0 0 0 0.5em;
+				
 			}
 
 				#footer .copyright li:first-child {
@@ -2194,8 +2195,16 @@
 				background-color: #ecf1f1;
 			}
 
+			#main > section.five {
+				background-color: #ecf1f1;
+			}
 			#main > section.four {
 				background-color: #e8edec;
+			}
+			
+			#main > section.five {
+				background-color: #ecf1f1;
+				width: 90%;
 			}
 
 /* Wide */

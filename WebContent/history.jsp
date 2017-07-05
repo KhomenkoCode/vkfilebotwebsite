@@ -45,8 +45,8 @@
 
 							-->
 							<ul>
-								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
-								<li><a href="history" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">History</span></a></li>
+								<li><a href="index" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">History</span></a></li>
 							</ul>
 						</nav>
 
@@ -69,43 +69,24 @@
 
 		<!-- Main -->
 			<div id="main">
-
-				<!-- Intro -->
-					<section id="top" class="one dark cover">
+					<section id="portfolio" class="three" style="padding-top:2%; height:1000pt;">
 						<div class="container">
 
-							<header>
-								<h2 class="alt">Hello, <strong>Username</strong>!<br /> Now, you can see your requests to the bot.<br />
-							</header>
-
-							<footer>
-								<a href="history" class="button scrolly">My requests history</a>
-							</footer>
+							
+							<h2>History</h2>
+							
+							<p style="text-align: left;">Tincidunt eu elit diam magnis<br/>
+							pretium accumsan etiam id urna. Ridiculus<br/>
+							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae<br/>
+							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem<br/></p>
+							
 
 						</div>
 					</section>
 
-				
-				<!-- About Me -->
-					<section class="three">
-						<div class="container">
+</div>
 
-							<header>
-								<h2>About Us</h2>
-							</header>
 
-							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-
-							<p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
-							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
-							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
-							parturient nulla quam placerat viverra mauris non cum elit tempus ullamcorper
-							dolor. Libero rutrum ut lacinia donec curae mus vel quisque sociis nec
-							ornare iaculis.</p>
-
-						</div>
-					</section>
-		</div>
 		<!-- Footer -->
 			<div id="footer">
 

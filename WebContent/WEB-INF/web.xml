@@ -12,4 +12,13 @@
     <servlet-name>indexServlet</servlet-name>
     <url-pattern>/index</url-pattern>
   </servlet-mapping>
+  
+   <servlet>
+    <servlet-name>historyServlet</servlet-name>
+    <servlet-class>servlets.HistoryPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>historyServlet</servlet-name>
+    <url-pattern>/history</url-pattern>
+  </servlet-mapping>
 </web-app>
