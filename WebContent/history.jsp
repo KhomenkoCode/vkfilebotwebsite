@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <!--
@@ -69,16 +69,15 @@
 
 		<!-- Main -->
 			<div id="main">
-					<section id="portfolio" class="three" style="padding-top:2%; height:1000pt;">
+					<section id="portfolio" class="three" style="padding-top:2%;">
 						<div class="container">
 
 							
 							<h2>History</h2>
 							
-							<p style="text-align: left;">Tincidunt eu elit diam magnis<br/>
-							pretium accumsan etiam id urna. Ridiculus<br/>
-							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae<br/>
-							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem<br/></p>
+							<p style="text-align: left;">
+							${requests}
+							</p>
 							
 
 						</div>

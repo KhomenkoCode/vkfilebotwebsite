@@ -75,7 +75,7 @@
 						<div class="container">
 
 							<header>
-								<h2 class="alt">Hello, <strong>Username</strong>!<br /> Now, you can see your requests to the bot.<br />
+								<h2 class="alt">Hello, <strong>Username</strong>!<br /> Now, you can see your requests to the bot.<br /></h2>
 							</header>
 
 							<footer>
