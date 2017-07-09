@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page language="java" contentType="text/html;charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
@@ -69,15 +70,24 @@
 
 		<!-- Main -->
 			<div id="main">
-					<section id="portfolio" class="three" style="padding-top:2%;">
+					<section id="portfolio" class="three" style="padding-top:2%; min-height:1000px;">
 						<div class="container">
-
-							
+ 
 							<h2>History</h2>
-							
-							<p style="text-align: left;">
-							${requests}
-							</p>
+
+
+							<c:forEach var = "request" items="${requests}">
+								<hr />
+								<table style="margin: 0;">
+	   							<tr>
+	    						<td style="width: 25%; vertical-align:middle;">
+								<p style="text-align: left; margin-bottom: 0;">
+								${request}
+								</p>
+								</td>
+								</tr>
+								</table>
+							</c:forEach>
 							
 
 						</div>
