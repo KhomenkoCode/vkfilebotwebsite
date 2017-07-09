@@ -80,7 +80,7 @@
 								<hr />
 								<table style="margin: 0;">
 	   							<tr>
-	    						<td style="width: 25%; vertical-align:middle;">
+	    						<td style="width: 25%;  vertical-align:middle;">
 								<p style="text-align: left; margin-bottom: 0;">
 								${request}
 								</p>
