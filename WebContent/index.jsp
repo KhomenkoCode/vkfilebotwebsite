@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE HTML>
 <!--
@@ -18,35 +19,30 @@
 	</head>
 	<body>
 
+		
+
 		<!-- Header -->
 			<div id="header">
 
 				<div class="top">
 
 					<!-- Logo -->
-						<div id="logo">
-							<h1 id="title">Username</h1>
-							<p><a href="index?logout=1">Log Out</a></p>
-						</div>
-
+					<div id="logo">
+						<c:choose>
+    						<c:when test="${isAuthorized == 0}">
+									<p><a href="javascript:PopUpShow()">Log In via telegram</a></p>
+    						</c:when>    
+    						<c:otherwise>
+									<h1 id="title">Username</h1>
+									<p><a href="index?logout=1">Log Out</a></p>
+		    				</c:otherwise>
+						</c:choose>
+					</div>
 					<!-- Nav -->
 						<nav id="nav">
-							<!--
-
-								Prologue's nav expects links in one of two formats:
-
-								1. Hash link (scrolls to a different section within the page)
-
-								   <li><a href="#foobar" id="foobar-link" class="icon fa-whatever-icon-you-want skel-layers-ignoreHref"><span class="label">Foobar</span></a></li>
-
-								2. Standard link (sends the user to another page/site)
-
-								   <li><a href="http://foobar.tld" id="foobar-link" class="icon fa-whatever-icon-you-want"><span class="label">Foobar</span></a></li>
-
-							-->
 							<ul>
 								<li><a href="#top" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
-								<li><a href="history" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">History</span></a></li>
+								<li><a href="history" class="skel-layers-ignoreHref"><span class="icon fa-th">History</span></a></li>
 							</ul>
 						</nav>
 
@@ -66,6 +62,8 @@
 				</div>
 
 			</div>
+		
+		
 
 		<!-- Main -->
 			<div id="main">
@@ -73,15 +71,30 @@
 				<!-- Intro -->
 					<section id="top" class="one dark cover">
 						<div class="container">
+							
+							<c:choose>
+   		 						<c:when test="${isAuthorized == 0}">
+									
+								<header>
+									<h2 class="alt"><strong>VkFilesBot</strong><br /> To watch your bot history, please, log in. <br /></h2>
+								</header>
 
-							<header>
-								<h2 class="alt">Hello, <strong>Username</strong>!<br /> Now, you can see your requests to the bot.<br /></h2>
-							</header>
+								<footer>
+									<a href="javascript:PopUpShow()" class="button scrolly">Log in via Telegram</a>
+								</footer>
 
-							<footer>
-								<a href="history" class="button scrolly">My requests history</a>
-							</footer>
+    							</c:when>    
+    							<c:otherwise>
+									<header>
+										<h2 class="alt">Hello, <strong>Username</strong>!<br /> Now, you can see your requests to the bot.<br /></h2>
+									</header>
 
+									<footer>
+										<a href="history" class="button scrolly">My requests history</a>
+									</footer>
+			    				</c:otherwise>
+							</c:choose>
+							
 						</div>
 					</section>
 
@@ -116,6 +129,27 @@
 
 			</div>
 
+		
+		<div class="b-popup" id="popup1">
+    		<div class="b-popup-content">
+        		<div align="right" style="margin=10%">
+        		<a href="javascript:PopUpHide()">Close</a>
+        		</div>
+        		<hr/>
+        		To sign in, follow these steps:
+        		<br/>
+        		1. Go to <u><a href="https://telegram.me/VkFiles_Bot?start=ws567sdgf7sdf123ssd213sa"  target="_blank">
+        		this link</a></u> 
+        		into your conversation with our bot.
+        		<br/>
+        		2. Press "Start" button
+        		<br/>
+        		3. <u><a href="index">Refresh this page.</a></u>
+    		
+    		</div>
+		</div>
+
+
 		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -124,6 +158,18 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
-
+			<script>
+    		$(document).ready(function(){  
+     			PopUpHide();
+    		});
+    		
+    		function PopUpShow(){
+        		$("#popup1").show();
+    		}
+	  		
+    		function PopUpHide(){
+    	    	$("#popup1").hide();
+    		}
+</script>
 	</body>
 </html>

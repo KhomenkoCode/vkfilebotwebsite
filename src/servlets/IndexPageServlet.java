@@ -27,6 +27,7 @@ public class IndexPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setAttribute("isAuthorized", 0);
 		response.setContentType("text/html");
 	    RequestDispatcher dispatcher = (RequestDispatcher) request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);

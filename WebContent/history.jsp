@@ -47,7 +47,7 @@
 							-->
 							<ul>
 								<li><a href="index" id="top-link" class="skel-layers-ignoreHref"><span class="icon fa-home">Intro</span></a></li>
-								<li><a href="#portfolio" id="portfolio-link" class="skel-layers-ignoreHref"><span class="icon fa-th">History</span></a></li>
+								<li><a href="#history" id="history-link" class="skel-layers-ignoreHref"><span class="icon fa-th">History</span></a></li>
 							</ul>
 						</nav>
 
@@ -70,22 +70,35 @@
 
 		<!-- Main -->
 			<div id="main">
-					<section id="portfolio" class="three" style="padding-top:2%; min-height:1000px;">
+					<section id="history" class="three" style="padding-top:2%; min-height:1000px;">
 						<div class="container">
  
 							<h2>History</h2>
 
-
-							<c:forEach var = "request" items="${requests}">
+							<c:forEach var = "request" begin="0" end="${numOfElements}" step="3">
 								<hr />
 								<table style="margin: 0;">
-	   							<tr>
-	    						<td style="width: 25%;  vertical-align:middle;">
-								<p style="text-align: left; margin-bottom: 0;">
-								${request}
-								</p>
-								</td>
-								</tr>
+	   								<tr>
+	    								<td style="width: 25%;  vertical-align:middle;">
+											<p style="text-align: left; margin-bottom: 0;">
+												<script type="text/javascript">
+													function addZero(n) {
+												    	return n > 9 ? n : "0" + n;
+													}
+												
+													var dateObj = ${requests[request]};
+													var currentDate = new Date(dateObj -3600000*((new Date().getTimezoneOffset())/60));
+													document.write(addZero(currentDate.getDate())+"."+
+															addZero(currentDate.getMonth())+"."+
+															currentDate.getFullYear()+" "+
+															addZero(currentDate.getHours())+":"+addZero(currentDate.getMinutes())); 
+												</script> 
+												<img src="${requests[request+1]}" alt="fileTypeIMG" style="height: 30pt;">
+												${requests[request+2]}
+												
+											</p>
+										</td>
+									</tr>
 								</table>
 							</c:forEach>
 							
@@ -93,7 +106,7 @@
 						</div>
 					</section>
 
-</div>
+			</div>
 
 
 		<!-- Footer -->
