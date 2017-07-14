@@ -87,7 +87,7 @@
 													}
 												
 													var dateObj = ${requests[request]};
-													var currentDate = new Date(dateObj -3600000*((new Date().getTimezoneOffset())/60));
+													var currentDate = new Date(dateObj);
 													document.write(addZero(currentDate.getDate())+"."+
 															addZero(currentDate.getMonth())+"."+
 															currentDate.getFullYear()+" "+
