@@ -15,4 +15,12 @@ public class JSONAuthorizationDataSerializingClass {
 	public String toString() {
 		return (codeGeneratedOnWebSite + " : " + chatID);
 	}
+	
+	public String getChatID() {
+		return chatID;
+	}
+	
+	public String getCode() {
+		return codeGeneratedOnWebSite;
+	}
 }
