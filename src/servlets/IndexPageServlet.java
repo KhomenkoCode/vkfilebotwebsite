@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
-import java.lang.StringBuilder;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,23 +33,31 @@ public class IndexPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Cookie[] cookies = request.getCookies();
-   		
+		
+		if(null == cookies) {
+
+			request.getSession();
+			cookies = request.getCookies();
+			response.sendRedirect("index");
+			return;
+		}
+		
 		String sessionId = sessionIdGenerator(cookies);
 		request.setAttribute("isAuthorized", 0);
 		request.setAttribute("sessionId", sessionId);
-				
+		
 		boolean isCIDFounded = false;
+		
 		for(Cookie currentCookie: cookies)
 			if(currentCookie.getName().equals("cid")) {
 				request.setAttribute("userCID", currentCookie.getValue());
 				isCIDFounded = true;
 			}
-		
+
 		if(!isCIDFounded)
 			if(!addCIDFromHashMapToCookiesAndSetAttribute(request, response, sessionId))
 				request.setAttribute("userCID", "");
-			
-		
+	
 		if(cookies.length == 1)
 		{
 			request.setAttribute("isAuthorized", 0);
@@ -62,7 +68,6 @@ public class IndexPageServlet extends HttpServlet {
 			//TODO: connection to db and getting username
 			request.setAttribute("username",  "USERNAME");
 		}
-		
 		
 		response.setContentType("text/html");
 	    RequestDispatcher dispatcher = (RequestDispatcher) request.getRequestDispatcher("/index.jsp");
@@ -77,7 +82,6 @@ public class IndexPageServlet extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	//If CID founds, this method set Attribute isAuthorized to 1
 	//return true if CID was founded
 	@SuppressWarnings("rawtypes")
 	private boolean addCIDFromHashMapToCookiesAndSetAttribute(HttpServletRequest request, HttpServletResponse response, String sessionId) {
