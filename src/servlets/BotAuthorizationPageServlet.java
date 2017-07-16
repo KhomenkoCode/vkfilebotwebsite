@@ -2,7 +2,6 @@ package servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,6 +26,8 @@ public class BotAuthorizationPageServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		authData.put("vkf05C34D9" , "12121212" );
+		
 		if(request.getContentType() != null)
 			if(request.getContentType().equals("application/json"))
 				doPost(request, response);
@@ -36,8 +37,7 @@ public class BotAuthorizationPageServlet extends HttpServlet {
 		Iterator  iterator = authData.entrySet().iterator();
 	    while(iterator.hasNext()) {
 	    	Map.Entry mapEntry = (Map.Entry)iterator.next();
-	        System.out.print("key is: "+ mapEntry.getKey() + " & Value is: ");
-	        response.getWriter().append((String) mapEntry.getKey()).append(" : ").append((String) mapEntry.getValue()).append("\n");
+	        System.out.print("code: "+ mapEntry.getKey() + " & cid: " + mapEntry.getValue());
 	    }
 	}
 
@@ -45,9 +45,8 @@ public class BotAuthorizationPageServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		 
 		ObjectMapper mapper = new ObjectMapper();
-		 
+		
 		try {
-			// read from file, convert it to user class
 			JSONAuthorizationDataSerializingClass currentData = mapper.readValue(request.getReader(), JSONAuthorizationDataSerializingClass.class);
 			authData.put(currentData.getCode(), currentData.getChatID());
 		    out.println(authData.toString());
@@ -59,4 +58,7 @@ public class BotAuthorizationPageServlet extends HttpServlet {
 		out.close();
 	}
 	
+	public static HashMap<String,String> getAuthorizationMap(){
+		return authData;
+	}
 }

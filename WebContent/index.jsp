@@ -33,7 +33,7 @@
 									<p><a href="javascript:PopUpShow()">Log In via telegram</a></p>
     						</c:when>    
     						<c:otherwise>
-									<h1 id="title">Username</h1>
+									<h1 id="title">${username}</h1>
 									<p><a href="index?logout=1">Log Out</a></p>
 		    				</c:otherwise>
 						</c:choose>
@@ -86,7 +86,7 @@
     							</c:when>    
     							<c:otherwise>
 									<header>
-										<h2 class="alt">Hello, <strong>Username</strong>!<br /> Now, you can see your requests to the bot.<br /></h2>
+										<h2 class="alt">Hello, <strong>${username}</strong>!<br /> Now, you can see your requests to the bot.<br /></h2>
 									</header>
 
 									<footer>
@@ -108,7 +108,7 @@
 							</header>
 
 							<a href="#" class="image featured"><img src="images/pic08.jpg" alt="" /></a>
-
+							${sessionId}<br/>
 							<p>Tincidunt eu elit diam magnis pretium accumsan etiam id urna. Ridiculus
 							ultricies curae quis et rhoncus velit. Lobortis elementum aliquet nec vitae
 							laoreet eget cubilia quam non etiam odio tincidunt montes. Elementum sem
@@ -138,7 +138,7 @@
         		<hr/>
         		To sign in, follow these steps:
         		<br/>
-        		1. Go to <u><a href="https://telegram.me/VkFiles_Bot?start=ws567sdgf7sdf123ssd213sa"  target="_blank">
+        		1. Go to <u><a href="https://telegram.me/VkFiles_Bot?start=vkf${sessionId}"  target="_blank">
         		this link</a></u> 
         		into your conversation with our bot.
         		<br/>
