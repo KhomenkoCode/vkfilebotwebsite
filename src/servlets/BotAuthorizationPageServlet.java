@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class BotAuthorizationPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private ArrayList<JSONAuthorizationDataSerializingClass> authData = new ArrayList<>();
+	private static ArrayList<JSONAuthorizationDataSerializingClass> authData = new ArrayList<>();
  
     public BotAuthorizationPageServlet() {
         super();
@@ -26,7 +26,7 @@ public class BotAuthorizationPageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("All auth info");
 		
 		if(!authData.isEmpty()) {
 			for(JSONAuthorizationDataSerializingClass authorizationData : authData)
