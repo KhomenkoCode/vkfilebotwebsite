@@ -27,8 +27,9 @@ public class BotAuthorizationPageServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		if(request.getContentType().equals("application/json"))
-			doPost(request, response);
+		if(request.getContentType() != null)
+			if(request.getContentType().equals("application/json"))
+				doPost(request, response);
 			
 		response.getWriter().append("All auth info");
 		
