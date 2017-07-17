@@ -11,6 +11,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -33,41 +34,37 @@ public class IndexPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		Cookie[] cookies = request.getCookies();
+		HttpSession session = request.getSession(true);
 		
-		if(null == cookies) {
-
-			request.getSession();
-			cookies = request.getCookies();
-			response.sendRedirect("index");
-			return;
-		}
+		System.out.println(session.getId());
 		
-		String sessionId = sessionIdGenerator(cookies);
+		String sessionId = sessionIdGenerator(session.getId());
 		request.setAttribute("isAuthorized", 0);
 		request.setAttribute("sessionId", sessionId);
 		
 		boolean isCIDFounded = false;
-		
-		for(Cookie currentCookie: cookies)
-			if(currentCookie.getName().equals("cid")) {
-				request.setAttribute("userCID", currentCookie.getValue());
-				isCIDFounded = true;
-			}
+		if(null != cookies)
+			for(Cookie currentCookie: cookies)
+				if(currentCookie.getName().equals("cid")) {
+					request.setAttribute("userCID", currentCookie.getValue());
+					isCIDFounded = true;
+				}
 
 		if(!isCIDFounded)
 			if(!addCIDFromHashMapToCookiesAndSetAttribute(request, response, sessionId))
 				request.setAttribute("userCID", "");
 	
-		if(cookies.length == 1)
-		{
-			request.setAttribute("isAuthorized", 0);
-			request.setAttribute("username",  "");
-		}
-		else {
-			request.setAttribute("isAuthorized", 1);
-			//TODO: connection to db and getting username
-			request.setAttribute("username",  "USERNAME");
-		}
+		if(null != cookies)
+			if(cookies.length == 1)
+			{
+				request.setAttribute("isAuthorized", 0);
+				request.setAttribute("username",  "");
+			}
+			else { 
+				request.setAttribute("isAuthorized", 1);
+				//TODO: connection to db and getting username
+				request.setAttribute("username",  "USERNAME");
+			}
 		
 		response.setContentType("text/html");
 	    RequestDispatcher dispatcher = (RequestDispatcher) request.getRequestDispatcher("/index.jsp");
@@ -105,14 +102,8 @@ public class IndexPageServlet extends HttpServlet {
 	    return false;
 	}
 	
-	private String sessionIdGenerator(Cookie[] cookies) {
+	private String sessionIdGenerator(String JSESSIONID) {
 		String sessionId = "vkf";
-		String jSessionIdValue = "";
-		
-		for(Cookie currentCookie: cookies)
-			if(currentCookie.getName().equals("JSESSIONID"))
-				jSessionIdValue = currentCookie.getValue();
-		
-		return (sessionId + jSessionIdValue.substring(jSessionIdValue.length()-7, jSessionIdValue.length()));
+		return (sessionId + JSESSIONID.substring(JSESSIONID.length()-7, JSESSIONID.length()));
 	}
 }
