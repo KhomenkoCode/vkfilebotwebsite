@@ -20,9 +20,9 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class HistoryPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    private String mDatabaseURL = "DB_URL_IS_REMOVED";
-    private String mDatabaseUser = "USER_IS_REMOVED";
-    private String mDatabasePassword = "PASSWORD_IS_REMOVED";
+    private String mDatabaseURL = "jdbc:postgresql://ec2-54-246-108-119.eu-west-1.compute.amazonaws.com:5432/d7lqrtk9bonh0o?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+    private String mDatabaseUser = "flggsxcjmmkhtj";
+    private String mDatabasePassword = "e35b60f396edbd05f2067e82317ca69f108e619962c64495f0113fd07ab146f6";
     private Connection mConnection = null;
     private static Statement mStatement = null;
     private static ResultSet theSet = null;

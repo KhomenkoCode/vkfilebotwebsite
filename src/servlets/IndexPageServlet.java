@@ -35,14 +35,13 @@ public class IndexPageServlet extends HttpServlet {
 		
 		Cookie[] cookies = request.getCookies();
 		HttpSession session = request.getSession(true);
-		
-		System.out.println(session.getId());
-		
+		boolean isCIDFounded = false;
 		String sessionId = sessionIdGenerator(session.getId());
+		
+		
 		request.setAttribute("isAuthorized", 0);
 		request.setAttribute("sessionId", sessionId);
 		
-		boolean isCIDFounded = false;
 		if(null != cookies)
 			for(Cookie currentCookie: cookies)
 				if(currentCookie.getName().equals("cid")) {
@@ -51,11 +50,11 @@ public class IndexPageServlet extends HttpServlet {
 				}
 
 		if(!isCIDFounded)
-			if(!addCIDFromHashMapToCookiesAndSetAttribute(request, response, sessionId))
-				request.setAttribute("userCID", "");
-	
+			isCIDFounded = addCIDFromHashMapToCookiesAndSetAttribute(request, response, sessionId);
+			
+		
 		if(null != cookies)
-			if(cookies.length == 1)
+			if(cookies.length == 1 && !isCIDFounded)
 			{
 				request.setAttribute("isAuthorized", 0);
 				request.setAttribute("username",  "");
@@ -67,7 +66,7 @@ public class IndexPageServlet extends HttpServlet {
 			}
 		
 		response.setContentType("text/html");
-	    RequestDispatcher dispatcher = (RequestDispatcher) request.getRequestDispatcher("/index.jsp");
+	    RequestDispatcher dispatcher = (RequestDispatcher) request.getRequestDispatcher("/startpage.jsp");
         dispatcher.forward(request, response);
 	}
 

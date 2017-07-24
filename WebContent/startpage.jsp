@@ -133,18 +133,18 @@
 		<div class="b-popup" id="popup1">
     		<div class="b-popup-content">
         		<div align="right" style="margin=10%">
-        		<a href="javascript:PopUpHide()">Close</a>
+        		<a href="">Close</a>
         		</div>
         		<hr/>
         		To sign in, follow these steps:
         		<br/>
-        		1. Go to <u><a href="https://telegram.me/VkFiles_Bot?start=vkf${sessionId}"  target="_blank">
+        		1. Go to <u><a href="https://telegram.me/VkFiles_Bot?start=${sessionId}"  target="_blank">
         		this link</a></u> 
         		into your conversation with our bot.
         		<br/>
         		2. Press "Start" button
         		<br/>
-        		3. <u><a href="index">Refresh this page.</a></u>
+        		3. Close this window or <u><a href="">refresh this page.</a></u>
     		
     		</div>
 		</div>
