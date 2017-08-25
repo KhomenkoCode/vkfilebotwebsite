@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+        
+<hibernate-configuration>
+
+  <session-factory>
+    <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+    <property name="hibernate.connection.driver_class">org.postgresql.Driver</property>
+    <property name="hibernate.connection.url">jdbc:postgresql:// [DB URL] </property>
+    <property name="hibernate.connection.username">[DB USERNAME]</property>
+    <property name="hibernate.connection.password">[DB PASSWORD]</property>
+    <property name="show_sql">true</property>
+    <property name="hibernate.current_session_context_class">thread</property>
+    <property name="hibernate.connection.ssl">true</property>
+    <property name="hibernate.connection.sslfactory">org.postgresql.ssl.NonValidatingFactory</property>
+    <property name="hibernate.enable_lazy_load_no_trans">true</property>
+    <mapping resource="RequestToBot.hbm.xml"/>
+    <mapping resource="BotUser.hbm.xml"/>
+
+  </session-factory>
+  
+</hibernate-configuration>

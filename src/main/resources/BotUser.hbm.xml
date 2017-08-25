@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+ 
+<hibernate-mapping package="main.java.databasetables">
+  <class name="BotUser" table="data">
+    <id column="id" name="userId" type="java.lang.Long">
+      <generator class="increment"/>
+    </id>
+    <property column="search_req_last" name="lastQuestion" type="java.lang.String"/>
+    <property column="chat_id" name="chatId" type="java.math.BigInteger"/>
+    <property column="last_name" name="lastName" type="java.lang.String"/>
+    <property column="first_name" name="firstName" type="java.lang.String"/>
+    <property column="user_step" name="stepOfTheLastQuestion" type="java.lang.Integer"/>
+     <property column="joined_on_utc" name="dateTimeOfLastJoin" type="java.sql.Timestamp"/>
+    <set name="requests">
+      <key column="id"/>
+      <one-to-many class="RequestToBot"/>
+    </set>
+
+  </class>
+</hibernate-mapping>

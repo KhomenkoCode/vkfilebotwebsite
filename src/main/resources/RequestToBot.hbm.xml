@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd"> 
+ 
+<hibernate-mapping package="main.java.databasetables">
+  <class name="RequestToBot" table="requests">
+    <id column="id" name="requestId" type="java.lang.Long">
+      <generator class="increment"/>
+    </id>
+    <property column="submitted_on_utc" name="dateTimeOfRequest" type="java.sql.Timestamp"/>
+    <property column="file_type" name="fileType" type="java.lang.Integer"/>
+    <property column="search_request" name="searchRequest" type="java.lang.String"/>
+    <property column="chat_id" name="chatId" type="java.math.BigInteger"/>
+    
+  </class>
+</hibernate-mapping>
